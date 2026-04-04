@@ -4,7 +4,7 @@ A compact floating widget that displays your Claude AI usage limits in real time
 
 No more switching tabs to check how much quota you have left.
 
-![screenshot](screenshots/screenshot.png)
+![screenshot](screenshots/screenshot1.png)
 
 ## What It Shows
 
@@ -13,6 +13,8 @@ No more switching tabs to check how much quota you have left.
 - **Plan badge** — your subscription tier displayed in the title bar (e.g. `CLAUSEAGE | Pro`)
 - **Extra usage** — only appears when your Current balance is above $0
 - **Live countdown** — "Updated: just now" → "half a minute ago" → ... → "Refreshing soon"
+
+![screenshot](screenshots/screenshot2.png)
 
 ## Features
 
