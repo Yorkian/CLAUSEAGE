@@ -1,0 +1,291 @@
+/* ── Claude Usage Widget ── */
+#claude-usage-widget {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483647;
+  width: 252px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 12px;
+  color: #1a1a1a;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10), 0 1px 4px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  user-select: none;
+  transition: box-shadow 0.2s, opacity 0.2s;
+}
+
+#claude-usage-widget.cuw-dragging {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+  opacity: 0.92;
+}
+
+#claude-usage-widget.cuw-collapsed .cuw-body-wrap,
+#claude-usage-widget.cuw-collapsed #cuw-body {
+  display: none;
+}
+
+/* ── Header ── */
+.cuw-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  cursor: grab;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.cuw-header:active {
+  cursor: grabbing;
+}
+
+.cuw-title {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #666;
+}
+
+.cuw-plan {
+  text-transform: none;
+  font-weight: 500;
+  opacity: 0.75;
+}
+
+.cuw-actions {
+  display: flex;
+  gap: 2px;
+}
+
+.cuw-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: none;
+  border-radius: 5px;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cuw-btn:hover {
+  background: rgba(0, 0, 0, 0.07);
+  color: #333;
+}
+
+#cuw-refresh:active svg {
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease;
+}
+
+/* ── Body ── */
+#cuw-body {
+  padding: 8px 10px 6px;
+}
+
+.cuw-loading {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #999;
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+.cuw-spinner {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-top-color: #6b8afd;
+  border-radius: 50%;
+  animation: cuw-spin 0.7s linear infinite;
+}
+
+@keyframes cuw-spin {
+  to { transform: rotate(360deg); }
+}
+
+.cuw-empty {
+  color: #aaa;
+  font-size: 11px;
+  padding: 4px 0;
+}
+
+/* ── Usage Row ── */
+.cuw-row {
+  margin-bottom: 6px;
+}
+
+.cuw-row:last-child,
+.cuw-row:last-of-type {
+  margin-bottom: 2px;
+}
+
+.cuw-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 3px;
+}
+
+.cuw-label {
+  font-weight: 500;
+  font-size: 11.5px;
+  color: #333;
+}
+
+.cuw-pct {
+  font-weight: 600;
+  font-size: 11.5px;
+  color: #333;
+  font-variant-numeric: tabular-nums;
+}
+
+.cuw-bar-track {
+  height: 5px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cuw-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.cuw-reset {
+  font-size: 10px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.cuw-balance {
+  color: #22c55e;
+}
+
+.cuw-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.cuw-updated {
+  font-size: 10px;
+  color: #bbb;
+}
+
+.cuw-github {
+  display: flex;
+  align-items: center;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+.cuw-github:hover {
+  color: #888;
+}
+
+/* ── Dark mode (claude.ai uses dark theme) ── */
+@media (prefers-color-scheme: dark) {
+  #claude-usage-widget {
+    background: rgba(32, 33, 36, 0.92);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #e0e0e0;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+  .cuw-header {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.02);
+  }
+  .cuw-title { color: #aaa; }
+  .cuw-btn { color: #888; }
+  .cuw-btn:hover { background: rgba(255, 255, 255, 0.08); color: #ddd; }
+  .cuw-label { color: #ddd; }
+  .cuw-pct { color: #ddd; }
+  .cuw-bar-track { background: rgba(255, 255, 255, 0.08); }
+  .cuw-reset { color: #777; }
+  .cuw-balance { color: #4ade80; }
+  .cuw-footer { border-top-color: rgba(255, 255, 255, 0.06); }
+  .cuw-updated { color: #666; }
+  .cuw-github { color: #555; }
+  .cuw-github:hover { color: #aaa; }
+  .cuw-loading { color: #777; }
+  .cuw-empty { color: #666; }
+}
+
+/* ── Also detect claude.ai's own dark class ── */
+html[data-theme="dark"] #claude-usage-widget,
+body.dark #claude-usage-widget,
+[data-mode="dark"] #claude-usage-widget {
+  background: rgba(32, 33, 36, 0.92);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"] .cuw-header,
+body.dark .cuw-header,
+[data-mode="dark"] .cuw-header {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+html[data-theme="dark"] .cuw-title,
+body.dark .cuw-title,
+[data-mode="dark"] .cuw-title { color: #aaa; }
+
+html[data-theme="dark"] .cuw-btn,
+body.dark .cuw-btn,
+[data-mode="dark"] .cuw-btn { color: #888; }
+
+html[data-theme="dark"] .cuw-label,
+body.dark .cuw-label,
+[data-mode="dark"] .cuw-label,
+html[data-theme="dark"] .cuw-pct,
+body.dark .cuw-pct,
+[data-mode="dark"] .cuw-pct { color: #ddd; }
+
+html[data-theme="dark"] .cuw-bar-track,
+body.dark .cuw-bar-track,
+[data-mode="dark"] .cuw-bar-track { background: rgba(255, 255, 255, 0.08); }
+
+html[data-theme="dark"] .cuw-reset,
+body.dark .cuw-reset,
+[data-mode="dark"] .cuw-reset { color: #777; }
+
+html[data-theme="dark"] .cuw-balance,
+body.dark .cuw-balance,
+[data-mode="dark"] .cuw-balance { color: #4ade80; }
+
+html[data-theme="dark"] .cuw-footer,
+body.dark .cuw-footer,
+[data-mode="dark"] .cuw-footer { border-top-color: rgba(255, 255, 255, 0.06); }
+
+html[data-theme="dark"] .cuw-updated,
+body.dark .cuw-updated,
+[data-mode="dark"] .cuw-updated { color: #666; }
+
+html[data-theme="dark"] .cuw-github,
+body.dark .cuw-github,
+[data-mode="dark"] .cuw-github { color: #555; }
+
+html[data-theme="dark"] .cuw-github:hover,
+body.dark .cuw-github:hover,
+[data-mode="dark"] .cuw-github:hover { color: #aaa; }
