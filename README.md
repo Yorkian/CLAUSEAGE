@@ -4,7 +4,7 @@ A compact floating widget that displays your Claude AI usage limits in real time
 
 No more switching tabs to check how much quota you have left.
 
-![screenshot](screenshots/screenshot1.png)
+![screenshot](screenshots/screenshot2.png)
 
 ## What It Shows
 
@@ -14,7 +14,7 @@ No more switching tabs to check how much quota you have left.
 - **Extra usage** — only appears when your Current balance is above $0
 - **Live countdown** — "Updated: just now" → "half a minute ago" → ... → "Refreshing soon"
 
-![screenshot](screenshots/screenshot2.png)
+![screenshot](screenshots/screenshot1.png)
 
 ## Features
 
