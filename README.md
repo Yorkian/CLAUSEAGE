@@ -49,7 +49,11 @@ git clone https://github.com/Yorkian/CLAUSEAGE.git
 
 ### From Chrome Web Store
 
-Coming soon.
+[Chrome Web Store](https://chromewebstore.google.com/detail/clauseage/fcokdblijmjihpghecfjagjnlmjgaidb)
+
+### From Greasy Fork
+
+[Greasy Fork](https://greasyfork.org/en/scripts/572450-clauseage)
 
 ## File Structure
 
